@@ -1,0 +1,135 @@
+C51 COMPILER V9.54   MAIN                                                                  02/27/2023 21:16:19 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\Professional software\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND
+                    - TABS(2)
+
+line level    source
+
+   1          #include "reg52.h"
+   2          
+   3          sbit key1 = P3 ^ 3;
+   4          sbit key2 = P3 ^ 4;
+   5          sbit key3 = P3 ^ 6;
+   6          sbit key4 = P3 ^ 7;
+   7          
+   8          
+   9          //定义电机接口
+  10          sbit La = P2 ^ 0;
+  11          sbit Lb = P2 ^ 1;
+  12          sbit Ra = P2 ^ 2;
+  13          sbit Rb = P2 ^ 3;
+  14          
+  15          void delay_ms(unsigned int k)
+  16          {
+  17   1        unsigned int i;
+  18   1        while(k--)
+  19   1        {
+  20   2          i = 124;
+  21   2          while(i--);
+  22   2        }
+  23   1      }
+  24          
+  25          void GoFront()
+  26          {
+  27   1        La = 1;
+  28   1        Lb = 0;
+  29   1        delay_ms(50);
+  30   1        Ra = 1;
+  31   1        Rb = 0;
+  32   1      }
+  33          
+  34          void GoBack()
+  35          {
+  36   1        La = 0;
+  37   1        Lb = 1;
+  38   1        delay_ms(50);
+  39   1        Ra = 0;
+  40   1        Rb = 1;
+  41   1      }
+  42          
+  43          void GoStop()
+  44          {
+  45   1        La = 0;
+  46   1        Lb = 0;
+  47   1        Ra = 0;
+  48   1        Rb = 0;
+  49   1      }
+  50          
+  51          void Left()
+  52          {
+  53   1        La = 0;
+  54   1        Lb = 0;
+C51 COMPILER V9.54   MAIN                                                                  02/27/2023 21:16:19 PAGE 2   
+
+  55   1        Ra = 1;
+  56   1        Rb = 0;
+  57   1        
+  58   1      }
+  59          
+  60          void Right()
+  61          {
+  62   1        La = 1;
+  63   1        Lb = 0;
+  64   1        Ra = 0;
+  65   1        Rb = 0;
+  66   1      }
+  67          
+  68          
+  69          void main()
+  70          {
+  71   1        while(1)
+  72   1        {
+  73   2          
+  74   2          if(key1 == 0)
+  75   2          {
+  76   3            delay_ms(10);
+  77   3            if(key1)
+  78   3              continue;
+  79   3            while(!key1);
+  80   3            GoFront();
+  81   3          }
+  82   2          else if(key2 == 0)
+  83   2          {
+  84   3            delay_ms(10);
+  85   3            if(key2)
+  86   3              continue;
+  87   3            while(!key2);
+  88   3            GoBack();
+  89   3          }
+  90   2          else if(key3 == 0)
+  91   2          {
+  92   3            delay_ms(10);
+  93   3            if(key3)
+  94   3              continue;
+  95   3            while(!key3);
+  96   3            Left();
+  97   3          }
+  98   2          if(key4 == 0)
+  99   2          {     
+ 100   3            delay_ms(10);
+ 101   3            if(key4)
+ 102   3              continue;
+ 103   3            while(!key4);
+ 104   3            Right();
+ 105   3          }
+ 106   2        }
+ 107   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    156    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.54   MAIN                                                                  02/27/2023 21:16:19 PAGE 3   
+
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -78,23 +78,10 @@ screen::Screen::~Screen()
     instance = nullptr;
 }
 
-void screen::Screen::draw_Point(const int &x, const int &y, const uint32_t &color)
+void screen::Screen::draw_Point(const int &x, const int &y, const uint32_t &color) const
 {
     if (plcd && x >= 0 && x < lcd_width && y >= 0 && y < lcd_height)
     {
         *(plcd + lcd_width * y + x) = color;
-    }
-}
-
-void screen::Screen::draw_Rectangle(const int &w, const int &h,
-                                    const int &x0, const int &y0,
-                                    const uint32_t &color)
-{
-    for (int y = y0; y < y0 + h; y++)
-    {
-        for (int x = x0; x < x0 + w; x++)
-        {
-            this->draw_Point(x, y, color);
-        }
     }
 }

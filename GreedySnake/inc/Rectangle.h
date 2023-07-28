@@ -1,59 +1,72 @@
-#ifndef __RECTANGLE_H__
-#define __RECTANGLE_H__
+#ifndef __RECTANGLE_HPP__
+#define __RECTANGLE_HPP__
 
-// 矩形类
-class Rectangle
+#include "Screen.h"
+
+namespace rectangle
 {
-public:
-    /***
-     * @brief 构造函数,初始化矩形
-     *
-     * @param l 矩形的长度
-     * @param w 矩形的宽
-     * @param x 矩形左上角点的x轴坐标
-     * @param y 矩形左上角点的y轴坐标
-     * @param color 矩形的颜色
-     */
-    Rectangle(const unsigned int& l, const unsigned int& w,
-              const int& x = 0, const int& y = 0,const unsigned int& color = 0x00);
+    // 矩形类
+    class Rectangle
+    {
+    private:
+        uint32_t w;          // 矩形的长
+        uint32_t h;          // 矩形的高
+        uint32_t fill_color; // 矩形的填充颜色
 
-    /***
-     * @brief 移动矩形的位置
-     *
-     * @param x x坐标
-     * @param y y坐标
-     */
-    void move(const int& x, const int& y);
+    public:
+        /***
+         * @brief 构造函数,初始化矩形
+         *
+         * @param _w 矩形的长
+         * @param _h 矩形的高
+         * @param _color 矩形的填充颜色
+         */
+        Rectangle(const uint32_t &_w, const uint32_t &_h,
+                  const uint32_t &_color = 0xffffff);
 
-    /***
-     * @brief 设置矩形的颜色
-     *
-     * @param color 颜色值
-     */
-    void setColor(const unsigned int& color);
+        /***
+         * @brief 重设矩形大小(长和宽)
+         *
+         * @param _w 矩形的长
+         * @param _h 矩形的高
+         */
+        void resize(const uint32_t &_w, const uint32_t &_h);
 
-    /***
-     * @brief 重设矩形大小(长和宽)
-     *
-     * @param l 矩形的长
-     * @param w 矩形的宽
-     */
-    void resize(const unsigned int& l, const unsigned int& w);
+        /***
+         * @brief 设置矩形的颜色
+         *
+         * @param _color 颜色值
+         */
+        void setfill_color(const uint32_t &_color);
 
-    /****** 下面函数用于获取矩形的属性值 *******/
-    unsigned int get_L();
-    unsigned int get_W();
-    unsigned int get_color();
-    int get_X();
-    int get_Y();
-    /****************************************/
+        /***
+         * @brief 在s屏幕上画出矩形
+         *
+         * @param s 屏幕
+         * @param x0 x轴坐标
+         * @param y0 y轴坐标
+         */
+        virtual void draw(const screen::Screen &s, const int &x0, const int &y0) const;
 
-private:
-    unsigned int m_l;     // 矩形的长
-    unsigned int m_w;     // 矩形的宽
-    int m_x0;             // 矩形左上角点的x轴坐标
-    int m_y0;             // 矩形左上角点的y轴坐标
-    unsigned int m_color; // 矩形的颜色
+        /****** 下面函数用于获取矩形的属性值 *******/
+        // 获取矩形的长度
+        uint32_t get_w() const
+        {
+            return this->w;
+        }
+        // 获取矩形的高度
+        uint32_t get_h() const
+        {
+            return this->h;
+        }
+        // 获取矩形的填充颜色
+        uint32_t get_fill_color() const
+        {
+            return this->fill_color;
+        }
+        /****************************************/
+    };
+
 };
 
 #endif

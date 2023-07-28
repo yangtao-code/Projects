@@ -2,27 +2,23 @@
 using namespace std;
 
 #include "Screen.h"
-#include "Rectangle.hpp"
+#include "Rectangle.h"
 #include "Touch.h"
 #include "TouchEvent.h"
+#include "Painter.h"
+#include "Ground.h"
 
 int main(int argc, char const *argv[])
 {
     screen::Screen *s = screen::Screen::getInstance();
 
-    rectangle::Rectangle rect(800, 480, 0x00);
-    rect.draw(*s, 0, 0);
+    painter::Painter p(*s);
+    rectangle::Rectangle rect(800, 480, 0xffff00);
 
-    touch::Touch *ts = touch::Touch::getInstance();
-
-    tevent::TouchEvent tev;
-    int i = 10;
-    while (i--)
-    {
-        tev.event(*ts);
-    }
-
-    s->draw_Rectangle(800, 480, 0, 0, 0xff0000);
+    Ground g(680,480,20,0xffffff,0xff00);
+    
+    p.draw_Rectangle(&rect,0,0);
+    p.draw_Rectangle(&g,0,0);
 
     return 0;
 }

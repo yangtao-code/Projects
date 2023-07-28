@@ -29,20 +29,7 @@ namespace screen
          * @param y 点在屏幕上的y轴坐标
          * @param color 颜色值
          */
-        void draw_Point(const int &x, const int &y, const uint32_t &color = 0x00);
-
-        /***
-         * @brief   在屏幕上画一个矩形
-         *
-         * @param w 矩形的长
-         * @param h 矩形的宽
-         * @param x0 矩形的左上角点的x轴坐标
-         * @param y0 矩形的左上角点的y轴坐标
-         * @param color 矩形颜色
-         */
-        void draw_Rectangle(const int &w, const int &h,
-                            const int &x0, const int &y0,
-                            const uint32_t &color = 0x00);
+        void draw_Point(const int &x, const int &y, const uint32_t &color = 0x00)const;
 
         /****   下面函数用于获取屏幕的信息    ****/
 

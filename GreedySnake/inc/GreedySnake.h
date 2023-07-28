@@ -4,7 +4,7 @@
 class GreedySnake
 {
 private:
-
+    
 };
 
 #endif

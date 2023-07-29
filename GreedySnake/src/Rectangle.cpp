@@ -22,6 +22,7 @@ rectangle::Rectangle::Rectangle(const uint32_t &_w, const uint32_t &_h,
                                 const uint32_t &_color)
     : w(_w), h(_h), fill_color(_color)
 {
+    //std::cout << "Rectangle()有参构造函数的调用" << std::endl;
 }
 
 void rectangle::Rectangle::Rectangle::setfill_color(const uint32_t &_color)

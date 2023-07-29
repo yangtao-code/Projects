@@ -33,20 +33,11 @@ namespace screen
 
         /****   下面函数用于获取屏幕的信息    ****/
 
-        uint32_t get_lcd_width() const
-        {
-            return this->lcd_width;
-        }
+        uint32_t get_lcd_width() const;
 
-        uint32_t get_lcd_height() const
-        {
-            return this->lcd_height;
-        }
+        uint32_t get_lcd_height() const;
 
-        uint32_t get_bits_per_pixel() const
-        {
-            return this->bits_per_pixel;
-        }
+        uint32_t get_bits_per_pixel() const;
 
         /***************************************/
     private:

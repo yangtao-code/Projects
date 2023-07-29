@@ -4,13 +4,7 @@
 
 void Ground::draw(const screen::Screen &s, const int &x0, const int &y0) const
 {
-    for (int y = y0; y < y0 + get_h(); y++)
-    {
-        for (int x = x0; x < x0 + get_w(); x++)
-        {
-            s.draw_Point(x, y, get_fill_color());
-        }
-    }
+    Rectangle::draw(s, x0, y0);
 
     // 画点的方式
     //  for (int j = 0; j < get_h(); j += d)

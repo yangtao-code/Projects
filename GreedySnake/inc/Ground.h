@@ -20,7 +20,7 @@ public:
      * @param _fill_color 填充颜色
      * @param _line_color 线条颜色
      */
-    Ground(const uint32_t &_w, const uint32_t &_h, const int &_d = 20,
+    explicit Ground(const uint32_t &_w, const uint32_t &_h, const int &_d = 20,
            const uint32_t &_fill_color = 0xffffff, const uint32_t &_line_color = 0x00);
 
     /***

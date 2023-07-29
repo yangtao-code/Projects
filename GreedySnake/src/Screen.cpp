@@ -9,18 +9,37 @@
 #include <sys/mman.h>
 #include <sys/ioctl.h>
 #include <linux/fb.h>
-// #include "Rectangle.hpp"
+
+#include <mutex>
 #include "Screen.h"
 
 screen::Screen *screen::Screen::instance = nullptr;
 
 screen::Screen *screen::Screen::getInstance()
 {
+    static std::mutex mex;
+    mex.lock();
     if (instance == nullptr)
     {
         instance = new Screen;
     }
+    mex.unlock();
     return instance;
+}
+
+uint32_t screen::Screen::get_lcd_width() const
+{
+    return this->lcd_width;
+}
+
+uint32_t screen::Screen::get_lcd_height() const
+{
+    return this->lcd_height;
+}
+
+uint32_t screen::Screen::get_bits_per_pixel() const
+{
+    return this->bits_per_pixel;
 }
 
 screen::Screen::Screen(const char *file)

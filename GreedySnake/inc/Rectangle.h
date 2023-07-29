@@ -21,7 +21,7 @@ namespace rectangle
          * @param _h 矩形的高
          * @param _color 矩形的填充颜色
          */
-        Rectangle(const uint32_t &_w, const uint32_t &_h,
+        explicit Rectangle(const uint32_t &_w, const uint32_t &_h,
                   const uint32_t &_color = 0xffffff);
 
         /***

@@ -31,7 +31,7 @@ namespace tevent
         pos_t first_pos; // 触摸屏幕的开始坐标
         pos_t last_pos;  // 触摸屏幕的离开坐标
     public:
-        TouchEvent();
+        explicit TouchEvent();
 
         /***
          * @brief 获取触摸屏状态

@@ -3,9 +3,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+
+#include <mutex>
 #include "Touch.h"
-
-
 
 touch::Touch *touch::Touch::instance = nullptr;
 
@@ -33,10 +33,13 @@ touch::Touch::~Touch()
 
 touch::Touch *touch::Touch::getInstance()
 {
+    static std::mutex mex;
+    mex.lock();
     if (instance == nullptr)
     {
         instance = new touch::Touch;
     }
+    mex.unlock();
     return instance;
 }
 

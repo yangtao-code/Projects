@@ -1,6 +1,18 @@
 #include <iostream>
 #include "Painter.h"
 
+painter::Painter &painter::Painter::operator<<(const rectangle::Rectangle &rec)
+{
+    rec.draw(this->s, this->pos_x, this->pos_y);
+    return *this;
+}
+
+painter::Painter &painter::Painter::operator<<(const image::Image &image)
+{
+    image.draw(this->s, this->pos_x, this->pos_y);
+    return *this;
+}
+
 void painter::Painter::draw_Image(const image::Image &pic, int x0, int y0) const
 {
     pic.draw(this->s, this->pos_x + x0, this->pos_y + y0);

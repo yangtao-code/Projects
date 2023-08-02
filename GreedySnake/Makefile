@@ -1,9 +1,9 @@
 TARGET:=GreedySnake
 CC:=arm-linux-g++ -std=c++11
-HEADPATH:= inc
+HEADPATH:= -I inc/ -I lib_inc/ 
 LIBPATH:= -L lib/
 SRCPATH:= src
-LINKLIB:=
+LINKLIB:= -ljpeg
 
 CSRC:=$(wildcard $(SRCPATH)/*.cpp)
 OBJS:=$(patsubst %.cpp,%.o,$(CSRC))
@@ -12,7 +12,7 @@ $(TARGET):$(OBJS)
 	$(CC) $^ -o $@ $(LIBPATH) $(LINKLIB) 
 
 %.o:%.cpp
-	$(CC) -c $< -o $@ -I$(HEADPATH)
+	$(CC) -c $< -o $@ $(HEADPATH)
 
 .PHONY : clean
 

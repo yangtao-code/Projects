@@ -49,6 +49,16 @@ namespace painter
          */
         void draw_Image(const image::Image &pic, int x0, int y0) const;
 
+        /***
+         * @brief 
+         * 
+         * @param rec 
+         * @return Painter& 
+         */
+        Painter& operator<<(const rectangle::Rectangle& rec);
+
+        Painter& operator<<(const image::Image& image);
+
         /****   以下函数用来获取或设置画家类的属性   ****/
         // 设置画笔的颜色
         void setcolor(uint32_t _color);
